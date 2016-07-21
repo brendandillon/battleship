@@ -109,6 +109,7 @@ module Display
   end
 
   def your_ships_title
+    print "\e[H\e[2J"
     puts "\nYour ships"
   end
 
