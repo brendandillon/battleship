@@ -51,6 +51,7 @@ module Display
   end
 
   def add_2_length_ship(human)
+    print "\e[H\e[2J"
     puts "I have laid out my ships on the grid.\nYou now need to layout your two ships.\n" +
     "The first is two units long and the\nsecond is three units long.\n" +
     "The grid has A1 at the top left and D4 at the bottom right."
@@ -69,6 +70,7 @@ module Display
     show_human_board(human)
     print "[Begin the game]"
     gets
+    print "\e[H\e[2J"
   end
 
   def get_shot_location
@@ -107,7 +109,6 @@ module Display
   end
 
   def your_ships_title
-    puts "\n=============\n"
     puts "\nYour ships"
   end
 

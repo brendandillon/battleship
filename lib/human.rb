@@ -16,7 +16,7 @@ class Human < Player
 
   def create_blueprint(length)
     blueprint = convert_to_coordinates(add_a_ship(length, self))
-    until acceptable?(blueprint)
+    until acceptable?(blueprint, length)
       blueprint = convert_to_coordinates(add_a_ship(length, self))
     end
     blueprint
@@ -24,7 +24,7 @@ class Human < Player
 
   def fire_shot
     shot = convert_to_coordinates(get_shot_location)
-    until on_grid?(shot)
+    until on_grid?(shot) && correct_length?(shot, 1)
       shot = convert_to_coordinates(get_shot_location)
     end
     shot[0]

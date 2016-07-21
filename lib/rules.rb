@@ -36,6 +36,10 @@ module Rules
     end
   end
 
+  def correct_length?(coordinates, length)
+    coordinates.length == length
+  end
+
 
   def not_overlapping?(coordinates)
     coordinates.none? do |coordinate|
@@ -43,8 +47,8 @@ module Rules
     end
   end
 
-  def acceptable?(coordinates)
-    on_grid?(coordinates) && in_line?(coordinates) && adjacent?(coordinates)
+  def acceptable?(coordinates, length)
+    on_grid?(coordinates) && in_line?(coordinates) && adjacent?(coordinates) && correct_length?(coordinates, length)
   end
 
 end
