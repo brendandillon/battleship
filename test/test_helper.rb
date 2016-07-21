@@ -1,0 +1,17 @@
+require 'SimpleCov'
+SimpleCov.start
+
+require 'minitest/autorun'
+require 'minitest/pride'
+# require './lib/board'
+# require './lib/cell'
+# require './lib/display'
+# require './lib/game'
+# require './lib/human'
+# require './lib/human_blueprint'
+# require './lib/input'
+# require './lib/player'
+# require './lib/robot'
+# require './lib/robot_blueprint'
+# require './lib/ship'
+require './lib/timer'
