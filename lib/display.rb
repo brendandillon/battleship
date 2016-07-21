@@ -127,6 +127,7 @@ module Display
   end
 
   def end_game_message
+    print "\e[H\e[2J"
     if @human.board.ship_count == 0
       puts "Sorry, you lost.\n"+
            "The computer took #{@robot.shot_count} shots to sink your ships.\n" +
