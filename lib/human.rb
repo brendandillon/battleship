@@ -1,6 +1,7 @@
 require './lib/player'
 require './lib/display'
 require './lib/input'
+require './lib/rules'
 
 class Human < Player
 
@@ -15,13 +16,18 @@ class Human < Player
 
   def create_blueprint(length)
     blueprint = convert_to_coordinates(add_a_ship(length, self))
-    # until acceptable?(blueprint)
-    #   blueprint = convert_to_coordinates(add_a_ship(length, self))
-    # end
+    until acceptable?(blueprint)
+      blueprint = convert_to_coordinates(add_a_ship(length, self))
+    end
+    blueprint
   end
 
   def fire_shot
-    convert_to_coordinates(get_shot_location)[0]
+    shot = convert_to_coordinates(get_shot_location)
+    until on_grid?(shot)
+      shot = convert_to_coordinates(get_shot_location)
+    end
+    shot[0]
   end
 
 end

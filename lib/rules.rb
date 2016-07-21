@@ -1,7 +1,7 @@
 module Rules
 
   def on_grid?(coordinates)
-    coordinates.all? { |coordinate| (coordinate[0] =~ /[0-3]/) && (coordinate[1] =~ /[0-3]/) } ? true : false
+    coordinates.all? { |coordinate| (coordinate[0].between?(0,3)) && (coordinate[1].between?(0,3))} ? true : false
   end
 
   def in_line?(coordinates)
@@ -30,7 +30,7 @@ module Rules
     end
   end
 
-  def adjacent_by_row_or_col?(incrementing_index)
+  def adjacent_by_row_or_col?(incrementing_index, coordinates)
     coordinates.each_cons(2).all? do |first, second|
       (first[incrementing_index] + 1) == second[incrementing_index]
     end
@@ -44,9 +44,7 @@ module Rules
   end
 
   def acceptable?(coordinates)
-    on_grid?(coordinates) &&
-    in_line?(coordinates) &&
-    adjacent?(coordinates)
+    on_grid?(coordinates) && in_line?(coordinates) && adjacent?(coordinates)
   end
 
 end
